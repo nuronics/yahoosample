@@ -46,6 +46,7 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult(data)
     else:
+        print("action is not yahooweatherforecast")
         return {}
     return res
  
