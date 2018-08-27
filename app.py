@@ -15,7 +15,7 @@ app = Flask(__name__)
 def webhook():
     req = request.get_json(silent=True, force=True)
 
-   ''' print("Request:")
+    ''' print("Request:")
     print(json.dumps(req, indent=4))
     'req=json.dumps(req, indent=4)''''
     res = processRequest(req)
@@ -96,4 +96,4 @@ def makeWebhookResult(data):
 if __name__ == '__main__':
      port = int(os.getenv('PORT', 5000))
      print("Starting app on port %d" % port)
-     app.run(debug=False,port=port,host='0.0.0.0')
+     app.run(debug=True,port=port,host='0.0.0.0')
