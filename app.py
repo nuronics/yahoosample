@@ -31,7 +31,8 @@ def processRequest(req):
         if yql_query is None:
             return {}
         yql_url = baseurl + urllib.parse.urlencode({'q': yql_query}) + "&format=json"
-        qq=urllib.request.Request(yql_url) with urllib.request.urlopen(qq) as resp
+        qq=urllib.request.Request(yql_url)
+        with urllib.request.urlopen(qq) as resp
         result=resp.read()
         data = json.loads(result)
        
