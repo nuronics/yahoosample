@@ -26,20 +26,19 @@ def webhook():
 
 def processRequest(req):
  if req.get("result").get("action") == "yahooWeatherForecast":
-        baseurl = "https://query.yahooapis.com/v1/public/yql?"
-        yql_query = makeYqlQuery(req)
-        if yql_query is None:
-            return {}
-        yql_url = baseurl + urllib.parse.urlencode({'q': yql_query}) + "&format=json"
-        qq=urllib.request.Request(yql_url)
-        with urllib.request.urlopen(qq) as resp
+       baseurl = "https://query.yahooapis.com/v1/public/yql?"
+       yql_query = makeYqlQuery(req)
+       if yql_query is None:
+           return {}
+       yql_url = baseurl + urllib.parse.urlencode({'q': yql_query}) + "&format=json"
+       qq=urllib.request.Request(yql_url)
+       with urllib.request.urlopen(qq) as resp:
         result=resp.read()
-        data = json.loads(result)
-       
-        res = makeWebhookResult(data)
+       data = json.loads(result)
+       res = makeWebhookResult(data)
  else:
-        print("action is not yahooweatherforecast")
-        return {}
+       print("action is not yahooweatherforecast")
+       return {}
  return res
 
 def makeYqlQuery(req):
