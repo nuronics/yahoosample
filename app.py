@@ -31,8 +31,8 @@ def processRequest(req):
         if yql_query is None:
             return {}
         yql_url = baseurl + urllib.parse.urlencode({'q': yql_query}) + "&format=json"
-        result = urllib.request.urlopen(yql_url)
-        '''resul=result.read()'''
+        qq=urllib.request.Request(yql_url) with urllib.request.urlopen(qq) as resp
+        result=resp.read()
         data = json.loads(result)
        
         res = makeWebhookResult(data)
@@ -93,4 +93,4 @@ def makeWebhookResult(data):
 if __name__ == '__main__':
      port = int(os.getenv('PORT', 5000))
      print("Starting app on port %d" % port)
-     app.run(debug=True,port=port,host='0.0.0.0')
+     app.run(debug=False,port=port,host='0.0.0.0')
