@@ -47,10 +47,9 @@ def makeYqlQuery(req):
     city = parameters.get("geo-city")
     if city is None:
         return None
-
+    print(city)
     return 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')'
-
-
+   
 def makeWebhookResult(data):
     query = data.get('query')
     if query is None:
