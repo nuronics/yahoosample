@@ -36,10 +36,10 @@ def processRequest(req):
         data = json.loads(result)
        
         res = makeWebhookResult(data)
-    else:
+ else:
         print("action is not yahooweatherforecast")
         return {}
-    return res
+ return res
 
 def makeYqlQuery(req):
     result = req.get("result")
