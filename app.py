@@ -34,7 +34,7 @@ def processRequest(req):
        qq=urllib.request.Request(yql_url)
        with urllib.request.urlopen(qq) as resp:
         result=resp.read()
-       data = json.loads(result)
+       data = json.loads(result,'jsonp')
        res = makeWebhookResult(data)
  else:
        print("action is not yahooweatherforecast")
